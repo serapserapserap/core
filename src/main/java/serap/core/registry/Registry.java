@@ -6,6 +6,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import serap.core.pointer.MutablePointer;
 
+import java.util.Iterator;
+import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Supplier;
 
@@ -107,6 +109,10 @@ public class Registry<T> {
         }
 
         return resultant;
+    }
+
+    public void forEach(BiConsumer<? super RegistryIdentifier, ? super T> consumer) {
+        this.registrants.forEach((registrant) -> consumer.accept(registrant.identifier, registrant.registrant));
     }
 
     /**
