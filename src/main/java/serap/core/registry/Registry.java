@@ -59,7 +59,7 @@ public class Registry<T> {
     }
 
     public boolean isLocked() {
-        return this.writable;
+        return !this.writable;
     }
 
     @Getter
